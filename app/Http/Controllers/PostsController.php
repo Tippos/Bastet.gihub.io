@@ -12,4 +12,5 @@ class PostsController extends Controller
         $list_post = Posts::all();
         return view('listPost', compact('list_post'));
     }
+
 }

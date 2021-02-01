@@ -443,10 +443,16 @@
             border-bottom: 1px solid grey;
         }
 
-        .style-post img {
+        .img-content {
             width: 500px;
             height: 500px;
             border-radius: 20px;
+        }
+
+        .img-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
 
         .style-post b {
@@ -456,6 +462,21 @@
         .style-post .style-time-post {
             font-size: 10px;
             color: grey;
+        }
+
+        {{--style comment--}}
+        .style-cmt {
+            padding-left: 20px;
+        }
+
+        .style-avt-cmt img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .style-content-cmt {
+            font-size: 15px;
         }
 
         .style-list-cat {
@@ -525,7 +546,8 @@
             flex-wrap: wrap;
             justify-content: space-between;
         }
-        .style-div{
+
+        .style-div {
             padding-top: 50px;
         }
 
@@ -534,7 +556,8 @@
             height: 400px;
             border-radius: 20px;
         }
-        .footer img{
+
+        .footer img {
             padding-top: 50px;
             width: 1360px;
             height: 200px;
@@ -577,7 +600,9 @@
     </div>
     {{--het div--}}
     <div class="footer">
-        <img src="https://genk.mediacdn.vn/thumb_w/600/2016/11349324-1685331671706633-667022670-n-1457155607213-crop-1457155622873.jpg" alt="">
+        <img
+            src="https://genk.mediacdn.vn/thumb_w/600/2016/11349324-1685331671706633-667022670-n-1457155607213-crop-1457155622873.jpg"
+            alt="">
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

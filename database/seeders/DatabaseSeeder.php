@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PostsSeeder::class,
             ProductsSeeder::class,
             CatsSeeder::class,
+            CommentsSeeder::class,
         ]);
 
     }

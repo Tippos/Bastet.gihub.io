@@ -3,7 +3,8 @@
     @foreach($list_post as $post)
         <div class="style-post">
             <div>
-                {{$post->userId}}
+                <img class="img-avatar" src="{{$post->getUser->avatar}}" alt="">
+                <span><b>{{$post->getUser->fullName}}</b></span>
             </div>
             <div>
                 <b>{{$post->name}}</b>
@@ -12,7 +13,7 @@
                 <i class="style-time-post">{{$post->created_at}}</i>
             </div>
             <div>
-                <img src="{{$post->image}}" alt="">
+                <img class="img-content" src="{{$post->image}}" alt="">
             </div>
             <div>
                 <b>Review :</b>
@@ -21,6 +22,13 @@
             <div>
                 <b>Rate :</b>
                 {{RATE_STAR($post->rate)}}
+            </div>
+            <div class="style-avt-cmt style-content-cmt style-cmt" >
+                <img  src="{{$post->getUserFromComment->first()->avatar}}}}" alt="">
+                <span>
+                   <b style="font-size: 15px">{{$post->getUserFromComment->first()->fullName}}</b> : {{$post->getComment->content}}
+               </span>
+
             </div>
         </div>
     @endforeach
