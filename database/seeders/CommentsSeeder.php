@@ -35,7 +35,14 @@ class CommentsSeeder extends Seeder
               'userId'=>3,
               'postId'=>3,
               'created_at'=>now()
-          ]
+          ],
+            [
+                'id'=>4,
+                'comment'=>'Quan vo cung cam on!',
+                'userId'=>4,
+                'postId'=>1,
+                'created_at'=>now()
+            ]
         ];
         Comments::insert($data);
     }

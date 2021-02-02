@@ -59,6 +59,21 @@ class UsersSeeder extends Seeder
                 'role' => ROLE_USER_COURSE,
                 'status' => STATUS_USER_ACTIVE,
                 'created_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'fullName' => 'Tien Nguyen A' ,
+                'birthday' => 938672290,
+                'email' => 'nguyenmanhen@gmail.com',
+                'phoneNumber' => '0989854727',
+                'job' => 'Student',
+                'avatar' => 'https://trumboss.vn/wp-content/uploads/2018/09/4708cd711c24da5ad732ef3f05248b10.jpg',
+                'facebook' => 'https://www.facebook.com/tiencuns1/',
+                'gender' => GENDER_MALE,
+                'country' => 'Viet Nam',
+                'role' => ROLE_USER_COURSE,
+                'status' => STATUS_USER_ACTIVE,
+                'created_at' => now(),
             ]
 
         ];
