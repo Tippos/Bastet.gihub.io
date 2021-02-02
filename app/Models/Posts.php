@@ -16,7 +16,7 @@ class Posts extends Model
 
     public function getComment()
     {
-        return $this->hasOne(Comments::class, 'postId', 'id');
+        return $this->hasMany(Comments::class, 'postId', 'id');
     }
 
     public function getUserFromComment()

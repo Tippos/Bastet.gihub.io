@@ -16,19 +16,25 @@
                 <img class="img-content" src="{{$post->image}}" alt="">
             </div>
             <div>
-                <b>Review :</b>
                 {{$post->description}}
             </div>
             <div>
                 <b>Rate :</b>
                 {{RATE_STAR($post->rate)}}
             </div>
-            <div class="style-avt-cmt style-content-cmt style-cmt">
 
-                <img src="{{$post->getUserFromComment->first()->avatar}}" alt="">
-                <span>
-                   <b style="font-size: 15px">{{$post->getUserFromComment->first()->fullName}}</b> : {{$post->getComment->comment}}
-               </span>
+            <div class="style-avt-cmt style-content-cmt style-cmt">
+{{--Lay thong tin cmt va user --}}
+                @foreach($post->getUserFromComment as $user)
+                    <div>
+                        <img src="{{$user->avatar}}" alt="">
+                        <b style="font-size: 15px">{{$user->fullName}}</b>
+                    </div>
+                    @foreach($post->getComment as $cmt)
+                        <div style="padding-left: 20px">{{$cmt->comment}}</div>
+                    @endforeach
+                @endforeach
+
 
             </div>
         </div>
