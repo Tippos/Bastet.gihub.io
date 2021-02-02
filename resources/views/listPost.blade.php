@@ -23,10 +23,11 @@
                 <b>Rate :</b>
                 {{RATE_STAR($post->rate)}}
             </div>
-            <div class="style-avt-cmt style-content-cmt style-cmt" >
-                <img  src="{{$post->getUserFromComment->first()->avatar}}}}" alt="">
+            <div class="style-avt-cmt style-content-cmt style-cmt">
+
+                <img src="{{$post->getUserFromComment->first()->avatar}}" alt="">
                 <span>
-                   <b style="font-size: 15px">{{$post->getUserFromComment->first()->fullName}}</b> : {{$post->getComment->content}}
+                   <b style="font-size: 15px">{{$post->getUserFromComment->first()->fullName}}</b> : {{$post->getComment->comment}}
                </span>
 
             </div>
