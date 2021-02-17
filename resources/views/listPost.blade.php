@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     {{--Form up post--}}
-    <div style="border: 0.4px solid grey;width: 500px;margin: auto;border-radius: 20px">
+    <div style="border: 0.5px solid grey;width: 500px;margin: auto;border-radius: 20px">
         <div style="width: 400px;margin: auto;">
             <div style="margin-left: 100px"><h3>Bạn đang nghĩ gì?</h3></div>
             <input class="form-control" type="text" placeholder="Tiêu đề" aria-label="default input example">
