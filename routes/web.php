@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductsController;
 Route::get('/home', [PostsController::class, 'getListPost']);
 Route::get('/cat', [CatsController::class, 'getListCat']);
 Route::get('/store', [ProductsController::class, 'getListProduct']);
+Route::get('/user/{id}',[UsersController::class,'getUser']);
 
 Route::post('/addUser', [UsersController::class, 'addUser']);
 Route::post('/addPost', [PostsController::class, 'addPost']);

@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    public function addUser(Request $request){
+    public function getUser($id)
+    {
+        $user = Users::find($id);
+        return view('userDetail',compact('user'));
+    }
+
+    public function addUser(Request $request)
+    {
         $validate = Validator::make($request->all(), [
             "fullName" => "required|min:2|max:25",
             "birthday" => "required|integer",
