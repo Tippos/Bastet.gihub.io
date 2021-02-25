@@ -6,7 +6,7 @@
         <hr>
         <p>Ngoài ra mỗi ca đều có các sen luôn sẵn sàng hướng dẫn khách chăm sóc các hoàng thượng !</p>
     </div>
-    <div class="style-list-cat">
+    <div class="style-list">
         @foreach($list_cat as $cat)
             <div class="cat-img">
                 <div class="layer-1">

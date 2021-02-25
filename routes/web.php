@@ -42,5 +42,5 @@ Route::delete('/delProduct/{id}', [ProductsController::class, 'delProduct']);
 Route::delete('/delCmt/{id}', [CommentsController::class, 'delCmt']);
 
 Route::get('/', function () {
-    return view('home');
+    return view('display');
 });
