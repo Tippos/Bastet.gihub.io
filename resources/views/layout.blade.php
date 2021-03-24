@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bastet's Home</title>
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS only BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- Styles -->
+    <!-- Bootstrap icon -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/styleBootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/styleContentWeb.css')}}">
 </head>
@@ -19,14 +21,10 @@
 <div class="header"> <!-- Ảnh bìa-->
     <div class="top-header">
         <div class="big-avt">
-            <img
-                src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/21761633_1958822234339295_3256710235391501529_n.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=C6EJOObBtu0AX9dalkc&_nc_ht=scontent.fhan2-1.fna&oh=cd37ab32a82b19ba1823e7e954b7165f&oe=6039048A"
-                alt="">
+            <img src="{{IMG_WALL}}" alt="">
         </div>
         <div class="small-avt">
-            <img
-                src="https://scontent.fhan2-5.fna.fbcdn.net/v/t1.0-9/56990401_2279272908960891_3090355224330633216_n.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=umVVopiHOi4AX8uKgam&_nc_ht=scontent.fhan2-5.fna&oh=d345e60a0269b0e411b3da0642551e9d&oe=603AF740"
-                alt="">
+            <img src="{{IMG_AVT}}" alt="">
         </div>
     </div>
     {{--het div--}}
@@ -38,8 +36,9 @@
                     <a class="nav-link style-color {{checkActiveMenu('/cat')}}" href="/cat">Cats</a>
                     <a class="nav-link style-color {{checkActiveMenu('/store')}}" href="/store">Store</a>
                     <a class="nav-link style-color" href="https://www.facebook.com/BastetsHome">Facebook</a>
-                    <a class="nav-link style-color" href="">Staff</a>
-
+                    <a class="nav-link style-color {{checkActiveMenu('/flappy')}}" href="/flappy">Flappy Cat</a>
+                    <a style="padding-left: 400px " class="nav-link style-color {{checkActiveMenu('/admin')}}"
+                       href="/admin">Admin</a>
                 </div>
             </nav>
         </div>

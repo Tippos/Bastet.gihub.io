@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->require();
             $table->string('image')->require();
             $table->smallInteger('cost')->require();
+            $table->tinyInteger('class')->require();
             $table->timestamps();
         });
     }

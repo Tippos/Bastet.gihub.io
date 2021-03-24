@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
 /*--Phan anh bia + avt--*/
 .header {
     margin: 30px;
@@ -89,76 +95,128 @@
 
 /*--CSS anh trong cat--*/
 
-.cat-img img {
-    width: 400px;
-    height: 300px;
-    border-radius: 50px;
-}
 
-.cat-img {
-    position: relative;
-    margin-top: 100px;
-}
 
-.layer-2 img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: 0.8s;
-    transform-origin: 40% 40%;
-}
-
-.cat-img:hover .layer-2 img {
-    opacity: 0.5;
-    transform: rotateY(360deg);
-}
-
-.layer-3 {
-    position: absolute;
-    top: 70px;
-    left: 50px;
-    opacity: 0;
-    transition: 0.8s;
-    transform-origin: 40% 40%;
-}
-
-.cat-img:hover .layer-3 {
-    color: white;
-    font-size: 20px;
-    opacity: 1;
-    transform: rotateY(360deg);
-}
-
-/*--chia khung cho listcat--*/
-.style-list {
-    width: 900px;
+list-cat {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: auto;
+    margin: 40px 0;
+}
+
+.container .card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card .content {
+    position: absolute;
+    bottom: -160px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    flex-direction: column;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: bottom 0.5s;
+    transition-delay: 0.8s;
+}
+
+.container .card:hover .content {
+    bottom: 0px;
+    transition-delay: 0s;
+}
+
+.container .card .content .contentBx h3 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 15px;
+    line-height: 1.3em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition-delay: 0.6s;
+}
+
+.container .card:hover .content .contentBx h3 {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.container .card .content .contentBx h3 span {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: initial;
+}
+
+.style-list {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.container .card .content .sci {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+}
+
+.container .card .content .sci li {
+    list-style: none;
+    margin: 0 10px;
+    transform: translateY(40px);
+    transition: 0.5s;
+    opacity: 0;
+    transition-delay: calc(0.2s * var(--i));
+}
+
+.container .card:hover .content .sci li {
+    transform: translateY(0px);
+    opacity: 1;
+
+}
+
+.container .card .content .sci li a {
+    color: #fff;
+    font-size: 24px;
 }
 
 
 /*--Product style--*/
 .product-style {
-    margin: auto;
     display: flex;
-    width: 1000px;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
-
-.style-div {
-    padding-top: 50px;
-}
-
-.product-img img {
-    width: 300px;
-    height: 400px;
-    border-radius: 20px;
-}
-
+/*footer*/
 .footer {
     margin-top: 100px;
     width: 1360px;

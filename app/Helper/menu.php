@@ -18,4 +18,6 @@ function checkActiveMenu($menuName){
     $url = getCurURL();
     return strpos($url,$menuName) >0 ? "active" : "";
 }
+
+
 ?>
