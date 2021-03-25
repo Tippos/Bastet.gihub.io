@@ -12,11 +12,12 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputImage" class="col-sm-2 col-form-label">Image Address</label>
+                <label for="inputName" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-10">
-                    <input type="text" name="image" class="form-control" id="inputImage">
+                    <input type="text" name="image" class="form-control" id="inputName" placeholder="Image Address">
                 </div>
             </div>
+
 
             <div class="form-group row">
                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
@@ -28,7 +29,7 @@
             <div class="form-group row">
                 <label for="inputCost" class="col-sm-2 col-form-label">Cost</label>
                 <div class="col-sm-10">
-                    <input type="number" name="cost" class="form-control" id="inputCost">
+                    <input type="number" name="cost" class="form-control" id="inputCost" placeholder=".000VND">
                 </div>
             </div>
 

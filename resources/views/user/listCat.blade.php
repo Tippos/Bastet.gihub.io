@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('user.layout')
 @section('content')
     <div class="alert alert-warning" role="alert" style="width: 700px;height: 200px;margin: auto">
         <h4 style="text-align: center">Danh Sách các hoàng thượng của quán !</h4>

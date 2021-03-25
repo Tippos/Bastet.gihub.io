@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bastet's Home</title>
     <link rel="stylesheet" href="{{asset('css/style-display.css')}}">
+    <link rel="icon" type="image/png" href="{{asset('login/images/icons/icon.jpg')}}"/>
 </head>
 <body>
 <div class="container">

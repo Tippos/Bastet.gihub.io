@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bastet's Home</title>
+    <link rel="icon" type="image/png" href="{{asset('login/images/icons/icon.jpg')}}"/>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS only BOOTSTRAP-->
@@ -25,6 +26,15 @@
         </div>
         <div class="small-avt">
             <img src="{{IMG_AVT}}" alt="">
+        </div>
+        <div class="login-content">
+            <a href="/log">
+                <u>login</u>
+            </a>
+            <span>/</span>
+            <a href="/sign">
+                <u>Sign Up</u>
+            </a>
         </div>
     </div>
     {{--het div--}}

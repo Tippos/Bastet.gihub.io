@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function getUser($id)
     {
         $user = Users::find($id);
-        return view('userDetail',compact('user'));
+        return view('user/userDetail',compact('user'));
     }
 
     public function addUser(Request $request)

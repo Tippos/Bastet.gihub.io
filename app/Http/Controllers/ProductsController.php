@@ -6,14 +6,17 @@ use App\Models\Cats;
 use App\Models\Products;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Queue\RedisQueue;
 use Illuminate\Support\Facades\Validator;
+use voku\helper\ASCII;
+use function Composer\Autoload\includeFile;
 
 class ProductsController extends Controller
 {
     public function getListProduct()
     {
         $list_pr = Products::all();
-        return view('listProduct', compact('list_pr'));
+        return view('user/listProduct', compact('list_pr'));
     }
 
     public function getFood()
@@ -39,7 +42,7 @@ class ProductsController extends Controller
         $validate = Validator::make($request->all(), [
             "name" => "required|min:2|max:20",
             "description" => "required",
-            "image" => "required|url",
+            "image" => "required",
             "cost" => "required|integer",
             "class" => "required|integer"
         ]);
@@ -64,8 +67,16 @@ class ProductsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        return view('admin/addProduct');
+        if ($add_pr->class == 1)
+            return redirect()->route('food')->with('key', 'ADD Completed ');
+        else if ($add_pr->class == 2)
+            return redirect()->route('toy')->with('key', 'ADD Completed');
+        else if ($add_pr->class == 3)
+            return redirect()->route('medicine')->with('key', 'ADD Completed');
+
+
     }
+
     public function findId($id)
     {
         try {
@@ -77,7 +88,7 @@ class ProductsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        return view('admin/upProduct',compact('p'));
+        return view('admin/upProduct', compact('p'));
     }
 
     public function upProduct(Request $request, $id)
@@ -100,6 +111,7 @@ class ProductsController extends Controller
             $up_pr->description = $request->description;
             $up_pr->image = $request->image;
             $up_pr->cost = $request->cost;
+            $up_pr->class = $request->class;
             $up_pr->save();
         } catch (ModelNotFoundException $ex) {
             return response()->json([], SC_QUERRY_ERROR); //user not found
@@ -108,13 +120,20 @@ class ProductsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        dd("Update completed");
+        if ($up_pr->class == 1)
+            return redirect()->route('food')->with('key', 'Updated ');
+        else if ($up_pr->class == 2)
+            return redirect()->route('toy')->with('key', 'Updated');
+        else if ($up_pr->class == 3)
+            return redirect()->route('medicine')->with('key', 'Updated');
+
     }
 
     public function delProduct($id)
     {
         try {
             $del_pr = Products::find($id);
+            $check = $del_pr->class;
             $del_pr->delete();
         } catch (ModelNotFoundException $ex) {
             return response()->json([], SC_QUERRY_ERROR); //user not found
@@ -123,6 +142,18 @@ class ProductsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        return view('admin/admin');
+        if ($check == 1)
+            return redirect()->route('food')->with('key', 'Deleted ');
+        else if ($check == 2)
+            return redirect()->route('toy')->with('key', 'Deleted');
+        else if ($check == 3)
+            return redirect()->route('medicine')->with('key', 'Deleted');
+    }
+
+    public function find(Request $request)
+    {
+        $key = $request->key;
+        $arr = Products::where("name", "like", "%" . $key . "%")->get();
+        return view('admin/finder', compact('arr'), compact('key'));
     }
 }

@@ -12,7 +12,7 @@ class PostsController extends Controller
     public function getListPost()
     {
         $list_post = Posts::all();
-        return view('listPost', compact('list_post'));
+        return view('user/listPost', compact('list_post'));
     }
 
     public function addPost(Request $request)

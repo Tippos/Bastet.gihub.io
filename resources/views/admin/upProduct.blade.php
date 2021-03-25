@@ -6,37 +6,38 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Product's Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="inputName">
+                    <input type="text" name="name" class="form-control" id="inputName" placeholder="{{$p->name}}" >
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputImage" class="col-sm-2 col-form-label">Image Address</label>
                 <div class="col-sm-10">
-                    <input type="text" name="image" class="form-control" id="inputImage">
+                    <input type="text" name="image" class="form-control" id="inputImage"  >
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input type="text" name="description" class="form-control" id="inputDescription">
+                    <input type="text" name="description" class="form-control" id="inputDescription" placeholder="{{$p->description}}">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputCost" class="col-sm-2 col-form-label">Cost</label>
                 <div class="col-sm-10">
-                    <input type="number" name="cost" class="form-control" id="inputCost">
+                    <input type="number" name="cost" class="form-control" id="inputCost"  placeholder="{{$p->cost}}">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputClass" class="col-sm-2 col-form-label">Class</label>
                 <div class="col-sm-10">
-                    <input type="number" name="class" class="form-control" id="inputClass">
+                    <input type="number" name="class" class="form-control" id="inputClass"  placeholder="{{$p->class}}">
                 </div>
             </div>
+
 
             <button type="reset" class="btn btn-warning">Reset</button>
             <button type="submit" class="btn btn-warning">Update</button>

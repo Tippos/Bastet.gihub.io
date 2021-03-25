@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('user.layout')
 @section('content')
     <div class="product-style">
         @foreach($list_pr as $pr)

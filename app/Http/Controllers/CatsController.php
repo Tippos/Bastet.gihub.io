@@ -13,7 +13,12 @@ class CatsController extends Controller
     public function getListCat()
     {
         $list_cat = Cats::all();
-        return view('listCat', compact('list_cat'));
+        return view('user/listCat', compact('list_cat'));
+    }
+    public function adminGetList()
+    {
+        $list_cat = Cats::all();
+        return view('admin/adminCat', compact('list_cat'));
     }
 
     public function addCat(Request $request)
