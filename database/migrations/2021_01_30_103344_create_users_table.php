@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook')->require();
             $table->tinyInteger('gender')->require();
             $table->string('country', 50)->require();
-            $table->tinyInteger('role')->require();
+            $table->tinyInteger('role')->default(ROLE_USER_STANDARD);
             $table->tinyInteger('status')->default(STATUS_USER_PENDING);
             $table->timestamps();
         });

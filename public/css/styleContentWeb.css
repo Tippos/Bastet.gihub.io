@@ -229,6 +229,7 @@ list-cat {
 
 /*footer*/
 .footer {
+    margin-left: 0px;
     margin-top: 100px;
     width: 1360px;
     bottom: 0;

@@ -17,56 +17,113 @@ use App\Http\Controllers\ProductsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// ADMIN
-Route::get('adminCat',[CatsController::class,'adminGetList'])->name('adminCat');
-
-Route::get('/home', [PostsController::class, 'getListPost'])->name('home');
-Route::get('/cat', [CatsController::class, 'getListCat'])->name('cat');
-Route::get('/store', [ProductsController::class, 'getListProduct'])->name('store');
-Route::get('/user/{id}', [UsersController::class, 'getUser'])->name('userDetail');
-Route::get('/food', [ProductsController::class, 'getFood'])->name('food');
-Route::get('/toy', [ProductsController::class, 'getToy'])->name('toy');
-Route::get('/medicine', [ProductsController::class, 'getMedicine'])->name('medicine');
-Route::get('/updateProduct/{id}', [ProductsController::class, 'findId']);
-
-
-Route::post('/addUser', [UsersController::class, 'addUser']);
-Route::post('/addPost', [PostsController::class, 'addPost']);
-Route::post('/addCat', [CatsController::class, 'addCat']);
-Route::post('/addProduct', [ProductsController::class, 'addProduct']);
-Route::post('/addCmt', [CommentsController::class, 'addCmt']);
-
-
-Route::put('/upUser/{id}', [UsersController::class, 'upUser']);
-Route::put('upPost/{id}', [PostsController::class, 'upPost']);
-Route::put('/upCat/{id}', [CatsController::class, 'upCat']);
-Route::post('/upProduct/{id}', [ProductsController::class, 'upProduct']); // da sua
-Route::put('/upCmt/{id}', [CommentsController::class, 'upCmt']);
-
-Route::delete('/delUser/{id}', [UsersController::class, 'delUser']);
-Route::delete('/delPost/{id}', [PostsController::class, 'delPost']);
-Route::delete('/delCat/{id}', [CatsController::class, 'delCat']);
-Route::get('/delProduct/{id}', [ProductsController::class, 'delProduct']); // da sua
-Route::delete('/delCmt/{id}', [CommentsController::class, 'delCmt']);
-//API SEARCH
-Route::post('/searchProduct', [ProductsController::class, 'find']);
-
-
-
+// -------------------------------------ADMIN-------------------------------------
 Route::get('/admin', function () {
     return view('admin/admin');
 })->name('admin');
 
+
+ //  ----------------------------------product-------------------------------------
+
+    //get
+Route::get('/food', [ProductsController::class, 'getFood'])->name('food');
+Route::get('/toy', [ProductsController::class, 'getToy'])->name('toy');
+Route::get('/medicine', [ProductsController::class, 'getMedicine'])->name('medicine');
+
+    // insert
+
+Route::get('/newProduct', function () {
+    return view('admin/product/newProduct');
+})->name('newProduct');
+
+Route::post('/addProduct', [ProductsController::class, 'addProduct']);
+
+    // update
+
+Route::get('/updateProduct/{id}', [ProductsController::class, 'findId']);
+Route::post('/upProduct/{id}', [ProductsController::class, 'upProduct']);
+//Route::get('/upProduct', function () {
+//    return view('admin/upProduct');
+//})->name('upProduct');
+
+    // Delete
+
+Route::get('/delProduct/{id}', [ProductsController::class, 'delProduct']);
+//API SEARCH
+
+Route::post('/searchProduct', [ProductsController::class, 'find']);
+
+
+ //--------------------------------Cat-------------------------------------
+    //get
+Route::get('adminCat',[CatsController::class,'adminGetList'])->name('adminCat');
+    //Insert
+Route::get('/newCat', function () {
+    return view('admin/cat/newCat');
+})->name('newCat');
+Route::post('/addCat', [CatsController::class, 'addCat']);
+    //Update
+Route::get('/updateCat/{id}', [CatsController::class, 'findId']);
+Route::post('/upCat/{id}', [CatsController::class, 'upCat']);
+
+    //Delete
+Route::get('/delCat/{id}', [CatsController::class, 'delCat']);
+    //search
+
+Route::post('/searchCat', [CatsController::class, 'find']);
+
+//--------------------------------User-------------------------------------
+    //get
+Route::get('/adminUser',[UsersController::class,'getUserAdmin'])->name('adminUser');
+Route::get('/standardUser',[UsersController::class,'getUserStandard'])->name('standardUser');
+    //Insert
+Route::get('/newUser', function () {
+    return view('admin/user/newUser');
+})->name('newUse');
+    //Update
+Route::get('/updateUser/{id}', [UsersController::class, 'findId']);
+Route::post('/upUser/{id}', [UsersController::class, 'upUser']);
+
+    //Delete
+Route::get('/delUser/{id}', [UsersController::class, 'delUser']);
+    //Search
+Route::post('/searchUser', [UsersController::class, 'find']);
+
+
+
+
+
+
+//GUEST
+Route::get('/homeGuest', [PostsController::class, 'getPost'])->name('homeGuest');
+
+
+
+//User
+Route::get('/home', [PostsController::class, 'getListPost'])->name('home');
+Route::get('/cat', [CatsController::class, 'getListCat'])->name('cat');
+Route::get('/store', [ProductsController::class, 'getListProduct'])->name('store');
+Route::get('/user/{id}', [UsersController::class, 'getUser'])->name('userDetail');
+
+
+Route::post('/addUser', [UsersController::class, 'addUser']);
+Route::post('/addPost', [PostsController::class, 'addPost']);
+
+
+
+Route::put('upPost/{id}', [PostsController::class, 'upPost']);
+
+Route::delete('/delPost/{id}', [PostsController::class, 'delPost']);
+
+
+
+
+
+
+
 Route::get('/flappy', function () {
     return view('flappy');
 });
-Route::get('/newProduct', function () {
-    return view('admin/addProduct');
-})->name('newProduct');
-
-Route::get('/upProduct', function () {
-    return view('admin/upProduct');
-})->name('upProduct');
 
 Route::get('/log', function () {
     return view('log/login');

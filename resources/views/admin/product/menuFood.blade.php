@@ -6,15 +6,15 @@
             {{ session('key') }}
         </div>
     @endif
-{{--    @if ($validate->any())--}}
-{{--        <div class="alert alert-danger">--}}
-{{--            <ul style="list-style: none; padding: 0">--}}
-{{--                @foreach ($validate->all() as $error)--}}
-{{--                    <li><strong>{{ $error }}</strong></li>--}}
-{{--                @endforeach--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    {{--    @if ($validate->any())--}}
+    {{--        <div class="alert alert-danger">--}}
+    {{--            <ul style="list-style: none; padding: 0">--}}
+    {{--                @foreach ($validate->all() as $error)--}}
+    {{--                    <li><strong>{{ $error }}</strong></li>--}}
+    {{--                @endforeach--}}
+    {{--            </ul>--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
     {{$i=1}}
     <table style="width: 1000px;margin:auto " class="table table-striped table-hover">
         <th>STT</th>

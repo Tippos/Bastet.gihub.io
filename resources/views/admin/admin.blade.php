@@ -14,20 +14,23 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminPage/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminPage/dist/css/adminlte.min.css')}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminPage/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{asset('adminPage/dist/css/style.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60"
+        <img class="animation__shake" src="{{asset('adminPage/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo"
+             height="60"
              width="60">
     </div>
 
@@ -69,7 +72,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/admin" class="brand-link">
-            <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
+            <img src="{{asset('adminPage/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Admin</span>
         </a>
@@ -89,20 +92,7 @@
             </div>
 
             <!-- SidebarSearch Form -->
-            <div class="navbar-search-block">
-                <form class="form-inline" action="/searchProduct" method="post">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="text" name="key" placeholder="Search"
-                               aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i style="color: white" class="fas fa-search"></i>
-                            </button>
 
-                        </div>
-                    </div>
-                </form>
-            </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -139,27 +129,133 @@
                                     <p>Medicine</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/newProduct" class="nav-link">
+                                    <i class="nav-icon fa fa-plus"></i>
+                                    <p>
+                                        Add Product
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="navbar-search-block">
+                                    <form class="form-inline" action="/searchProduct" method="post">
+                                        <div class="input-group input-group-sm">
+                                            <input class="form-control form-control-navbar" type="text" name="key"
+                                                   placeholder="Search with Product's Name"
+                                                   aria-label="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-navbar" type="submit">
+                                                    <i style="color: white" class="fas fa-search"></i>
+                                                </button>
 
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="/newProduct" class="nav-link">
-                            <i class="nav-icon fa fa-plus"></i>
-                            <p>
-                                Add Product
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/adminCat  " class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-bell"></i>
                             <p>
                                 Cat
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">2</span>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminCat" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        List Cat
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/newCat" class="nav-link">
+                                    <i class="nav-icon fa fa-plus"></i>
+                                    <p>
+                                        Add Cat
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="navbar-search-block">
+                                    <form class="form-inline" action="/searchCat" method="post">
+                                        <div class="input-group input-group-sm">
+                                            <input class="form-control form-control-navbar" type="text" name="key"
+                                                   placeholder="Search with Cat's Name"
+                                                   aria-label="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-navbar" type="submit">
+                                                    <i style="color: white" class="fas fa-search"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                        </ul>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-user"></i>
+                            <p>
+                                User
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">3</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/adminUser" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Administrator
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/standardUser" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        User Standard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/newUser" class="nav-link">
+                                    <i class="nav-icon fa fa-plus"></i>
+                                    <p>
+                                        Add User
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="navbar-search-block">
+                                    <form class="form-inline" action="/searchUser" method="post">
+                                        <div class="input-group input-group-sm">
+                                            <input class="form-control form-control-navbar" type="text" name="key"
+                                                   placeholder="Search with Name"
+                                                   aria-label="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-navbar" type="submit">
+                                                    <i style="color: white" class="fas fa-search"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                        </ul>
                     </li>
 
-                        <!-- /.sidebar-menu -->
+
+                    <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
 
@@ -173,29 +269,36 @@
 {{--        </div>--}}
 {{--    </footer>--}}
 
-    <!-- Control Sidebar -->
+<!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
 </div>
+
+
 <div class="table">
     @yield('table')
 </div>
 <!-- ./wrapper -->
 
+
+
+
+
 <!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
+<script src="{{asset('adminPage/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('adminPage/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- overlayScrollbars -->
-<script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('adminPage/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.js')}}"></script>
+<script src="{{asset('adminPage/dist/js/adminlte.js')}}"></script>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"

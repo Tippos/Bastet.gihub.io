@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Cats;
 use App\Models\Posts;
+use App\Models\Products;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use function Composer\Autoload\includeFile;
+
 
 class CatsController extends Controller
 {
@@ -15,17 +18,32 @@ class CatsController extends Controller
         $list_cat = Cats::all();
         return view('user/listCat', compact('list_cat'));
     }
+
     public function adminGetList()
     {
         $list_cat = Cats::all();
-        return view('admin/adminCat', compact('list_cat'));
+        return view('admin/cat/adminCat', compact('list_cat'));
+    }
+
+    public function findId($id)
+    {
+        try {
+            $c = Cats::find($id);;
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //user not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
+        return view('admin/cat/upCat', compact('c'));
     }
 
     public function addCat(Request $request)
     {
         $validate = Validator::make($request->all(), [
             "name" => "required|min:2|max:20",
-            "image" => "required|url",
+            "image" => "required",
             "description" => "required"
         ]);
         if ($validate->fails()) {
@@ -35,10 +53,13 @@ class CatsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $image = $request->image;
+            $image->move('img/image-cat', $image->getClientOriginalName());
             $add_cat = new Cats();
             $add_cat->name = $request->name;
             $add_cat->form = $request->form;
-            $add_cat->image = $request->image;
+            $add_cat->image = '/img/image-cat/' . $image->getClientOriginalName();
+
             $add_cat->description = $request->description;
             $add_cat->save();
         } catch (ModelNotFoundException $ex) {
@@ -48,14 +69,14 @@ class CatsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        dd("add completed");
+        return redirect()->route('adminCat')->with('key', 'Add Completed');
     }
 
     public function upCat(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
             "name" => "required|min:2|max:20",
-            "image" => "required|url",
+            "image" => "required",
             "description" => "required"
         ]);
         if ($validate->fails()) {
@@ -65,10 +86,12 @@ class CatsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $image = $request->image;
+            $image->move('img/image-cat', $image->getClientOriginalName());
             $up_cat = Cats::find($id);
             $up_cat->name = $request->name;
             $up_cat->form = $request->form;
-            $up_cat->image = $request->image;
+            $up_cat->image = '/img/image-cat/' . $image->getClientOriginalName();
             $up_cat->description = $request->description;
             $up_cat->save();
         } catch (ModelNotFoundException $ex) {
@@ -78,7 +101,7 @@ class CatsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        dd("Update completed");
+        return redirect()->route('adminCat')->with('key', 'Updated');
     }
 
     public function delCat($id)
@@ -93,6 +116,14 @@ class CatsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        dd('Delete Completed');
+        return redirect()->route('adminCat')->with('key', 'Deleted');
+    }
+
+    //Search
+    public function find(Request $request)
+    {
+        $key = $request->key;
+        $list_cat = Cats::where("name", "like", "%" . $key . "%")->get();
+        return view('admin/cat/adminCat', compact('list_cat'), compact('key'));
     }
 }

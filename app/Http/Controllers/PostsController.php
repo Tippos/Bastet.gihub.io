@@ -14,6 +14,12 @@ class PostsController extends Controller
         $list_post = Posts::all();
         return view('user/listPost', compact('list_post'));
     }
+    // tra ve view guest
+    public function getPost()
+    {
+        $list_post = Posts::all();
+        return view('guest/listPostDetail', compact('list_post'));
+    }
 
     public function addPost(Request $request)
     {

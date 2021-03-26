@@ -22,19 +22,19 @@ class ProductsController extends Controller
     public function getFood()
     {
         $list_pr_food = Products::all();
-        return view('admin/menuFood', compact('list_pr_food'));
+        return view('admin/product/menuFood', compact('list_pr_food'));
     }
 
     public function getToy()
     {
         $list_pr_toy = Products::all();
-        return view('admin/menuToy', compact('list_pr_toy'));
+        return view('admin/product/menuToy', compact('list_pr_toy'));
     }
 
     public function getMedicine()
     {
         $list_pr_m = Products::all();
-        return view('admin/menuMedicine', compact('list_pr_m'));
+        return view('admin/product/menuMedicine', compact('list_pr_m'));
     }
 
     public function addProduct(Request $request)
@@ -53,10 +53,12 @@ class ProductsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $image = $request->image;
+            $image->move('img/image-product', $image->getClientOriginalName());
             $add_pr = new Products();
             $add_pr->name = $request->name;
             $add_pr->description = $request->description;
-            $add_pr->image = $request->image;
+            $add_pr->image = '/img/image-product/' . $image->getClientOriginalName();
             $add_pr->cost = $request->cost;
             $add_pr->class = $request->class;
             $add_pr->save();
@@ -77,6 +79,7 @@ class ProductsController extends Controller
 
     }
 
+// tim ID de sua doi
     public function findId($id)
     {
         try {
@@ -88,7 +91,7 @@ class ProductsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        return view('admin/upProduct', compact('p'));
+        return view('admin/product/upProduct', compact('p'));
     }
 
     public function upProduct(Request $request, $id)
@@ -96,7 +99,7 @@ class ProductsController extends Controller
         $validate = Validator::make($request->all(), [
             "name" => "required|min:2|max:20",
             "description" => "required",
-            "image" => "required|url",
+            "image" => "required",
             "cost" => "required|integer"
         ]);
         if ($validate->fails()) {
@@ -106,10 +109,14 @@ class ProductsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+
             $up_pr = Products::find($id);
+            $image = $request->image;
+            $image->move('img/image-product', $image->getClientOriginalName());
+
             $up_pr->name = $request->name;
             $up_pr->description = $request->description;
-            $up_pr->image = $request->image;
+            $up_pr->image = '/img/image-product/' . $image->getClientOriginalName();
             $up_pr->cost = $request->cost;
             $up_pr->class = $request->class;
             $up_pr->save();
@@ -154,6 +161,6 @@ class ProductsController extends Controller
     {
         $key = $request->key;
         $arr = Products::where("name", "like", "%" . $key . "%")->get();
-        return view('admin/finder', compact('arr'), compact('key'));
+        return view('admin/product/finder', compact('arr'), compact('key'));
     }
 }

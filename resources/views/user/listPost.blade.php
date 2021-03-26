@@ -10,24 +10,51 @@
                         <input type="text" name="name" class="form-control" id="inputName" placeholder="Tiêu Đề">
                     </div>
                 </div>
+                {{--JS Preview Image Before Upload--}}
+                <script>
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function (e) {
+                                $('#blah').attr('src', e.target.result);
+                            }
+
+                            reader.readAsDataURL(input.files[0]); // convert to base64 string
+                        }
+                    }
+                </script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                {{--form image--}}
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <input type="text" name="image" class="form-control" id="inputName" placeholder="Hình Ảnh">
+                        <input id="image" type="file" name="avatar" class="form-control" required="true"
+                               placeholder="Hình Ảnh">
+                        <img style="width: 200px;height: 200px;margin:20px 20px 20px 70px;border-radius: 20px"
+                             id="blah"
+                             src=""
+                             alt="Hình Ảnh">
                     </div>
+                    <br/>
                 </div>
+                <script>
+                    $("#image").change(function () {
+                        readURL(this);
+                    });
+                </script>
+                {{--Het Script--}}
 
 
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <input type="text" name="description" class="form-control" id="inputDescription"
-                               placeholder="Nội Dung">
-                    </div>
+                <div s class="mb-3" style="width: 330px">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              placeholder="Nội Dung"></textarea>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <input type="number" name="cost" class="form-control" id="inputCost" placeholder="Rate ★"
-                               max="5"min="1">
+                               max="5" min="1">
                     </div>
                 </div>
 
@@ -62,32 +89,11 @@
             <div>
                 {{$post->description}}
             </div>
-            <div>
+            <div style="border-bottom: 1px solid gray">
                 <b>Rate :</b>
                 {{RATE_STAR($post->rate)}}
             </div>
-            {{--Form comment--}}
-            <div>
-                <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                              style="height: 70px"></textarea>
-                    <label for="floatingTextarea2">Viết bình luận</label>
-                </div>
-            </div>
-            <div class="style-avt-cmt style-content-cmt style-cmt">
-                {{--Lay thong tin cmt va user --}}
-                @foreach($post->getUserFromComment as $user)
-                    <a class="user-detail" href="/user/{{$user->id}}">
-                        <div>
-                            <img src="{{$user->avatar}}" alt="">
-                            <span> <b style="font-size: 15px">{{$user->fullName}}</b></span>
-                        </div>
-                    </a>
-                    @foreach($post->getComment as $cmt)
-                        <div style="padding-left: 20px">{{$cmt->comment}}</div>
-                    @endforeach
-                @endforeach
-            </div>
         </div>
+
     @endforeach
 @endsection

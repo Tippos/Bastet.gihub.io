@@ -5,7 +5,7 @@ define('STATUS_USER_LOCK' ,3);
 define('STATUS_USER_PENDING',4);
 
 define('ROLE_USER_ADMIN',1);
-define('ROLE_USER_COURSE',2);
+define('ROLE_USER_STANDARD',2);
 
 define('GENDER_MALE',1);
 define('GENDER_FEMALE',2);
