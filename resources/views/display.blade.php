@@ -15,7 +15,7 @@
         <br>
         World of cat
         <br>
-        <a href="/home"><img src="{{asset('img/avt.jpg')}}" alt=""></a>
+        <a href="/log"><img src="{{asset('img/avt.jpg')}}" alt=""></a>
     </h2>
 </div>
 <script src="{{asset('js/anime.min.js')}}"></script>

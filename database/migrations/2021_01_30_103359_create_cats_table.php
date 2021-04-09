@@ -19,6 +19,8 @@ class CreateCatsTable extends Migration
             $table->string('form',20)->require();
             $table->string('image')->require();
             $table->string('description',50)->require();
+            $table->float('weightCat')->nullable();
+            $table->integer('class')->require()->default(1);
             $table->timestamps();
         });
     }

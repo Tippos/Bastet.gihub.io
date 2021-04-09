@@ -1,7 +1,7 @@
 @extends('admin.admin')
 @section('table')
 
-    <div style="margin: auto;width: 1000px;" class="col-lg-9">
+    <div style="margin-left: 300px;width: 1000px;" class="col-lg-9">
         <form action="/addProduct" enctype="multipart/form-data" method="post">
             @csrf
             {{ csrf_field() }}

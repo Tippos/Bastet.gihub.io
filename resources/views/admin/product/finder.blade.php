@@ -2,7 +2,7 @@
 @section('table')
 
     {{$i=1}}
-    <table style="width: 1000px;margin:auto " class="table table-striped table-hover">
+    <table style="width: 1000px;margin-left: 300px" class="table table-striped table-hover">
         <th>STT</th>
         <th>Name</th>
         <th>Image</th>

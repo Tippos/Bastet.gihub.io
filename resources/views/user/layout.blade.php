@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bastet's Home</title>
+    <!-- Bootstrap icon-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <link rel="icon" type="image/png" href="{{asset('login/images/icons/icon.jpg')}}"/>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,12 +33,10 @@
         </div>
         <div class="login-content">
             <a href="/log">
-                <u>login</u>
+                log out
+                <span><i class="fa fa-sign-out"></i></span>
             </a>
-            <span>/</span>
-            <a href="/sign">
-                <u>Sign Up</u>
-            </a>
+
         </div>
     </div>
     {{--het div--}}
@@ -44,7 +46,7 @@
                 <div class="nav nav-tabs">
                     <a class="nav-link style-color {{checkActiveMenu('/home')}}" href="/home">Home</a>
                     <a class="nav-link style-color {{checkActiveMenu('/cat')}}" href="/cat">Cats</a>
-                    <a class="nav-link style-color {{checkActiveMenu('/store')}}" href="/store">Store</a>
+                    <a class="nav-link style-color {{checkActiveMenu('/stores')}}" href="/stores">Store</a>
                     <a class="nav-link style-color" href="https://www.facebook.com/BastetsHome">Facebook</a>
                     <a class="nav-link style-color {{checkActiveMenu('/flappy')}}" href="/flappy">Flappy Cat</a>
                     <a style="padding-left: 400px " class="nav-link style-color {{checkActiveMenu('/admin')}}"

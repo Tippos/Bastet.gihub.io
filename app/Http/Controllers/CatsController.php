@@ -13,16 +13,36 @@ use function Composer\Autoload\includeFile;
 
 class CatsController extends Controller
 {
-    public function getListCat()
+    public function getListCat(Request $request)
     {
-        $list_cat = Cats::all();
+        $key = $request->key;
+        if ($key == 1)
+            $list_cat = Cats::all()->sortBy('name');
+        else if ($key == 2)
+            $list_cat = Cats::all()->sortByDesc('name');
+        else if ($key == 3)
+            $list_cat = Cats::all()->sortBy('weightCat');
+        else if ($key == 4)
+            $list_cat = Cats::all()->sortByDesc('weightCat');
+        else
+            $list_cat = Cats::all();
         return view('user/listCat', compact('list_cat'));
     }
 
-    public function adminGetList()
+    public function getCat(Request $request)
     {
-        $list_cat = Cats::all();
-        return view('admin/cat/adminCat', compact('list_cat'));
+        $key = $request->key;
+        if ($key == 1)
+            $list_cat = Cats::where('class', '=', '1')->orderBy('name', 'asc')->paginate(5);
+        else if ($key == 2)
+            $list_cat = Cats::where('class', '=', '1')->orderBy('name', 'desc')->paginate(5);
+        else if ($key == 3)
+            $list_cat = Cats::where('class', '=', '1')->orderBy('weightCat', 'desc')->paginate(5);
+        else if ($key == 4)
+            $list_cat = Cats::where('class', '=', '1')->orderBy('weightCat', 'desc')->paginate(5);
+        else
+            $list_cat = Cats::where('class', '=', '1')->orderBy('created_at', 'asc')->paginate(5);
+        return response()->json($list_cat);
     }
 
     public function findId($id)

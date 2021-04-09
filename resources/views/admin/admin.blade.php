@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bastet's Home</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="icon" type="image/png" href="{{asset('login/images/icons/icon.jpg')}}"/>
     <!-- CSS only -->
 
@@ -110,7 +112,7 @@
                                 <span class="badge badge-info right">3</span>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview ">
                             <li class="nav-item">
                                 <a href="/food" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
@@ -253,13 +255,20 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-arrow-up"></i>
+                        </a>
+                    </li>
 
 
                     <!-- /.sidebar-menu -->
         </div>
+
         <!-- /.sidebar -->
 
     </aside>
+
 
 {{--    <footer class="main-footer">--}}
 {{--        <strong>Copyright &copy; 2014-2021 <a href="/">Bastet's Home</a>.</strong>--}}
@@ -280,14 +289,15 @@
 <div class="table">
     @yield('table')
 </div>
-<!-- ./wrapper -->
 
 
 
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-
-<!-- jQuery -->
-
+<!-- Vue JS -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- js adminPage-->
 <script src="{{asset('adminPage/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('adminPage/plugins/jquery-ui/jquery-ui.min.js')}}"></script>

@@ -29,12 +29,9 @@
         </div>
         <div class="login-content">
             <a href="/log">
-                <u>login</u>
+                <u>log out</u>
             </a>
             <span>/</span>
-            <a href="/sign">
-                <u>Sign Up</u>
-            </a>
         </div>
     </div>
     {{--het div--}}
@@ -44,11 +41,9 @@
                 <div class="nav nav-tabs">
                     <a class="nav-link style-color {{checkActiveMenu('/home')}}" href="/home">Home</a>
                     <a class="nav-link style-color {{checkActiveMenu('/cat')}}" href="/cat">Cats</a>
-                    <a class="nav-link style-color {{checkActiveMenu('/store')}}" href="/store">Store</a>
+                    <a class="nav-link style-color {{checkActiveMenu('/stores')}}" href="/stores">Store</a>
                     <a class="nav-link style-color" href="https://www.facebook.com/BastetsHome">Facebook</a>
                     <a class="nav-link style-color {{checkActiveMenu('/flappy')}}" href="/flappy">Flappy Cat</a>
-                    <a style="padding-left: 400px " class="nav-link style-color {{checkActiveMenu('/admin')}}"
-                       href="/admin">Admin</a>
                 </div>
             </nav>
         </div>

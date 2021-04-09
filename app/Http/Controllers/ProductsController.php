@@ -11,31 +11,88 @@ use Illuminate\Support\Facades\Validator;
 use voku\helper\ASCII;
 use function Composer\Autoload\includeFile;
 
+
 class ProductsController extends Controller
 {
     public function getListProduct()
     {
-        $list_pr = Products::all();
+        $list_pr = Products::paginate(9);
         return view('user/listProduct', compact('list_pr'));
     }
 
-    public function getFood()
+    public function getFoodStore()
     {
-        $list_pr_food = Products::all();
-        return view('admin/product/menuFood', compact('list_pr_food'));
+        $list_pr = Products::where("class", "=", 1)->get();
+        return view('user/stores/storeFood', compact('list_pr'));
     }
 
-    public function getToy()
+    public function getToyStore()
     {
-        $list_pr_toy = Products::all();
-        return view('admin/product/menuToy', compact('list_pr_toy'));
+        $list_pr = Products::where("class", "=", 2)->get();
+        return view('user/stores/storeToy', compact('list_pr'));
     }
 
-    public function getMedicine()
+    public function getMedicineStore()
     {
-        $list_pr_m = Products::all();
-        return view('admin/product/menuMedicine', compact('list_pr_m'));
+        $list_pr = Products::where("class", "=", 3)->get();
+        return view('user/stores/storeMedicine', compact('list_pr'));
     }
+
+    public function getFood(Request $request)
+    {
+        $key=$request->key;
+        if ($key == 1)
+            $list_pr_food = Products::where("class", "=", 1)->orderBy('name','asc')->paginate(5);
+        else if ($key == 2)
+            $list_pr_food = Products::where("class", "=", 1)->orderBy('name','desc')->paginate(5);
+        else if ($key == 3)
+            $list_pr_food = Products::where("class", "=", 1)->orderBy('cost','asc')->paginate(5);
+
+        else if ($key == 4)
+            $list_pr_food = Products::where("class", "=", 1)->orderBy('cost','desc')->paginate(5);
+        else
+            $list_pr_food = Products::where("class", "=", 1)->orderBy('created_at','asc')->paginate(5);
+        return response()->json($list_pr_food);
+    }
+
+    public function getToy(Request $request)
+    {
+
+        $key=$request->key;
+        if ($key == 1)
+            $list_pr_toy = Products::where("class", "=", 2)->orderBy('name','asc')->paginate(5);
+        else if ($key == 2)
+            $list_pr_toy = Products::where("class", "=", 2)->orderBy('name','desc')->paginate(5);
+        else if ($key == 3)
+            $list_pr_toy = Products::where("class", "=", 2)->orderBy('cost','asc')->paginate(5);
+
+        else if ($key == 4)
+            $list_pr_toy = Products::where("class", "=", 2)->orderBy('cost','desc')->paginate(5);
+        else
+            $list_pr_toy = Products::where("class", "=", 2)->orderBy('created_at','asc')->paginate(5);
+        return response()->json($list_pr_toy);
+    }
+
+    public function getMedicine(Request $request)
+    {
+        $key=$request->key;
+        if ($key == 1)
+            $list_pr_m = Products::where("class", "=", 3)->orderBy('name','asc')->paginate(5);
+        else if ($key == 2)
+            $list_pr_m = Products::where("class", "=", 3)->orderBy('name','desc')->paginate(5);
+        else if ($key == 3)
+            $list_pr_m = Products::where("class", "=", 3)->orderBy('cost','asc')->paginate(5);
+
+        else if ($key == 4)
+            $list_pr_m = Products::where("class", "=", 3)->orderBy('cost','desc')->paginate(5);
+        else
+            $list_pr_m = Products::where("class", "=", 3)->orderBy('created_at','asc')->paginate(5);
+        return response()->json($list_pr_m);
+    }
+
+
+
+
 
     public function addProduct(Request $request)
     {

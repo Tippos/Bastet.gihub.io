@@ -4,7 +4,7 @@
     <div style="border: 0.5px solid grey;width: 500px;margin: auto;border-radius: 20px">
         <div style="    width: 400px;margin: auto;">
             <div style="margin-left: 80px"><h3>Bạn đang nghĩ gì?</h3></div>
-            <form>
+            <form action="/addPost" enctype="multipart/form-data" method="post">
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <input type="text" name="name" class="form-control" id="inputName" placeholder="Tiêu Đề">
@@ -29,7 +29,7 @@
                 {{--form image--}}
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <input id="image" type="file" name="avatar" class="form-control" required="true"
+                        <input id="image" type="file" name="image" class="form-control" required="true"
                                placeholder="Hình Ảnh">
                         <img style="width: 200px;height: 200px;margin:20px 20px 20px 70px;border-radius: 20px"
                              id="blah"
@@ -48,13 +48,19 @@
 
                 <div s class="mb-3" style="width: 330px">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                              placeholder="Nội Dung"></textarea>
+                              placeholder="Nội Dung" name="description"></textarea>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <input type="number" name="cost" class="form-control" id="inputCost" placeholder="Rate ★"
+                        <input type="number" name="rate" class="form-control" id="inputCost" placeholder="Rate ★"
                                max="5" min="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="number" name="userId" class="form-control" id="inputCost" placeholder="User ID"
+                               max="100" min="1">
                     </div>
                 </div>
 

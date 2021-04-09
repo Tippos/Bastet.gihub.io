@@ -3,7 +3,18 @@
     <div style="margin: auto;width: 1000px;" class="col-lg-9">
         <form action="/upUser/{{$user->id}}" enctype="multipart/form-data" method="post">
             @csrf
-
+            <div class="form-group row">
+                <label for="inputfullName" class="col-sm-2 col-form-label">User Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="userName" class="form-control" id="inputuserName">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputfullName" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputpassword">
+                </div>
+            </div>
             <div class="form-group row">
                 <label for="inputfullName" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">
@@ -98,7 +109,7 @@
                     <select name="country" id="inputCountry">
                         <option value=""></option>
                         <option value="America">America</option>
-                        <option value="Endland">English</option>
+                        <option value="Endland">England</option>
                         <option value="Việt Nam">Việt Nam</option>
                     </select>
                     <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>

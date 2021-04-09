@@ -3,7 +3,18 @@
     <div style="margin: auto;width: 1000px;" class="col-lg-9">
         <form action="/addUser" enctype="multipart/form-data" method="post">
             @csrf
-
+            <div class="form-group row">
+                <label for="inputfullName" class="col-sm-2 col-form-label">User Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="userName" class="form-control" id="inputuserName">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputfullName" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputpassword">
+                </div>
+            </div>
             <div class="form-group row">
                 <label for="inputfullName" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">
@@ -34,13 +45,7 @@
                     <input type="text" name="job" class="form-control" id="inputJob">
                 </div>
             </div>
-{{--            <div class="form-group row">--}}
-{{--                <label for="inputAvatar" class="col-sm-2 col-form-label">Avatar </label>--}}
-{{--                <div class="col-sm-10">--}}
-{{--                    <input type="file" name="avatar" class="form-control" required="true">--}}
-{{--                </div>--}}
-{{--                <br/>--}}
-{{--            </div>--}}
+
             {{--JS Preview Image Before Upload--}}
             <script>
                 function readURL(input) {

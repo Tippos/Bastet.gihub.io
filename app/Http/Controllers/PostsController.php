@@ -11,7 +11,7 @@ class PostsController extends Controller
 {
     public function getListPost()
     {
-        $list_post = Posts::all();
+        $list_post = Posts::all()->sortByDesc('created_at');
         return view('user/listPost', compact('list_post'));
     }
     // tra ve view guest
@@ -25,7 +25,7 @@ class PostsController extends Controller
     {
         $validate = Validator::make($request->all(), [
             "name" => "required|min:2|max:20",
-            "image" => "required|url",
+            "image" => "required",
             "description" => "required",
             "rate" => "required|integer",
             "userId" => "required|integer",
@@ -37,9 +37,11 @@ class PostsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $image = $request->image;
+            $image->move('img/img-post', $image->getClientOriginalName());
             $add_post = new Posts();
             $add_post->name = $request->name;
-            $add_post->image = $request->image;
+            $add_post->image = '/img/img-post/' . $image->getClientOriginalName();
             $add_post->description = $request->description;
             $add_post->rate = $request->rate;
             $add_post->userId = $request->userId;
@@ -52,7 +54,7 @@ class PostsController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        dd('Add Post Completed');
+        return redirect()->route('home');
     }
 
     public function upPost(Request $request, $id)

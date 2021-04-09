@@ -17,6 +17,8 @@ class UsersSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
+                'userName'=>'tiencuns1',
+                'password'=>'123456',
                 'fullName' => 'Nguyễn Mạnh Tiến',
                 'birthday' => 938672290,
                 'email' => 'nguyenmanhtien3091999@gmail.com',
@@ -33,6 +35,8 @@ class UsersSeeder extends Seeder
             [
                 'id' => 2,
                 'fullName' => 'Nguyễn Mạnh T',
+                'userName'=>'tiencuns2',
+                'password'=>'123456',
                 'birthday' => 938672290,
                 'email' => 'nguyenmanhtien309@gmail.com',
                 'phoneNumber' => '0989854738',
@@ -47,6 +51,8 @@ class UsersSeeder extends Seeder
             ],
             [
                 'id' => 3,
+                'userName'=>'tiencuns3',
+                'password'=>'123456',
                 'fullName' => 'Ngọc Anh Dương',
                 'birthday' => 938672290,
                 'email' => 'nguyenmanhtien@gmail.com',
@@ -62,6 +68,8 @@ class UsersSeeder extends Seeder
             ],
             [
                 'id' => 4,
+                'userName'=>'tiencuns4',
+                'password'=>'123456',
                 'fullName' => 'Tuấn Hoàng Dương',
                 'birthday' => 938672290,
                 'email' => 'nguyenmanhen@gmail.com',
