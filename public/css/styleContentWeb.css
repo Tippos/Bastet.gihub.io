@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*--Phan anh bia + avt--*/
+.header {
+    margin: 30px;
+    width: 1450px;
+    height: 400px;
+    position: relative;
+}
+
+.top-header {
+    margin: auto;
+}
+
+.big-avt img {
+    width: 1450px;
+    height: 500px;
+
+}
+
+.small-avt img {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    bottom: -200px;
+    left: 500px;
+    border-radius: 200px;
+    opacity: 1;
+}
+
+.small-avt:hover img {
+    transform: scale(1.1);
+}
+
+.login-content {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/*--Mau chu menu--*/
+.style-color {
+    color: lightsalmon;
+    font-family: "DejaVu Sans";
+    font-size: 20px;
+}
+
+/*--Noi dung--*/
+.content {
+    margin-top: 100px;
+}
+
+/*--Style cua bai post--*/
+.style-post {
+    width: 500px;
+    margin: auto;
+    padding-top: 50px;
+    border-bottom: 1px solid grey;
+}
+
+.img-content {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+.img-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.style-post b {
+    font-size: 20px;
+}
+
+.style-post .style-time-post {
+    font-size: 10px;
+    color: grey;
+}
+
+/*--style comment--*/
+.style-cmt {
+    padding-left: 20px;
+}
+
+.style-avt-cmt img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.style-content-cmt {
+    font-size: 15px;
+}
+
+
+/*--CSS anh trong cat--*/
+
+
+list-cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.container .card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card .content {
+    position: absolute;
+    bottom: -160px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    flex-direction: column;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: bottom 0.5s;
+    transition-delay: 0.8s;
+}
+
+.container .card:hover .content {
+    bottom: 0px;
+    transition-delay: 0s;
+}
+
+.container .card .content .contentBx h3 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 15px;
+    line-height: 1.3em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition-delay: 0.6s;
+}
+
+.container .card:hover .content .contentBx h3 {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.container .card .content .contentBx h3 span {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: initial;
+}
+
+.style-list {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.container .card .content .sci {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+}
+
+.container .card .content .sci li {
+    list-style: none;
+    margin: 0 10px;
+    transform: translateY(40px);
+    transition: 0.5s;
+    opacity: 0;
+    transition-delay: calc(0.2s * var(--i));
+}
+
+.container .card:hover .content .sci li {
+    transform: translateY(0px);
+    opacity: 1;
+
+}
+
+.container .card .content .sci li a {
+    color: #fff;
+    font-size: 24px;
+}
+
+
+/*--Product style--*/
+.product-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*footer*/
+.footer {
+    margin-left: 0px;
+    margin-top: 100px;
+    width: 1360px;
+    bottom: 0;
+    background-color: #1a202c;
+    display: flex;
+}
+
+.footer .ct {
+    font-size: 12px;
+    color: white;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+/*--User Detail--*/
+.user-detail div {
+    color: #1a202c;
+}
+
+.user-detail:hover span {
+    color: black;
+    text-decoration-line: underline;
+}
+
+.deltail {
+    display: flex;
+    margin: auto;
+}
+
+.deltail .right {
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.style-img-deltail {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.status-style-1 {
+    color: green;
+}
+
+.status-style-2 {
+    color: grey;
+}
+
+.status-style-3 {
+    color: red;
+}
+
+.status-style-4 {
+    color: blue;
+}
+
