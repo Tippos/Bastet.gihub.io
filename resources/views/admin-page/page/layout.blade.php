@@ -31,8 +31,14 @@
         <div class="small-avt">
             <img src="{{IMG_AVT}}" alt="">
         </div>
+        <div class="detail-user">
+            <a href="userAdmin/{{$user->id}}">
+                <img style="width: 50px;height: 50px;border-radius: 50%" src="{{$user->avatar}}" alt="">
+            </a >
+            <a href="userAdmin/{{$user->id}}">{{$user->fullName}}</a>
+        </div>
         <div class="login-content">
-            <a href="getAuthLogin">
+            <a href="logOut">
                 log out
                 <span><i class="fa fa-sign-out"></i></span>
             </a>
@@ -48,8 +54,8 @@
                     <a class="nav-link style-color {{checkActiveMenu('/cat')}}" href="/cat">Cats</a>
                     <a class="nav-link style-color {{checkActiveMenu('/stores')}}" href="/stores">Store</a>
                     <a class="nav-link style-color" href="https://www.facebook.com/BastetsHome">Facebook</a>
-                    <a style="color: red" class="nav-link style-color {{checkActiveMenu('/admin')}}"
-                       href="/admin">Admin</a>
+                    <a style="color: red" class="nav-link style-color {{checkActiveMenu('/inforAdmin')}}"
+                       href="/inforAdmin">Admin</a>
                 </div>
             </nav>
         </div>

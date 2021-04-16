@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentsController;
 use \App\Http\Controllers\PostsController;
 use \App\Http\Controllers\CatsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,12 @@ use App\Http\Controllers\ProductsController;
 */
 // -------------------------------------ADMIN-------------------------------------
 Route::get('/admin',[UsersController::class,'getAdmin'])->name('admin');
+Route::get('/inforAdmin',[UsersController::class,'inforAdmin'])->name('inforAdmin');
+//edit user detail
+Route::get('/userAdmin/{id}', [UsersController::class, 'getUserAdmin']);
+Route::get('userAdmin/updateUserPageAdmin/{id}',[UsersController::class,'updateUserPageAdmin']);
+Route::get('upUserPageAdmin/updateUserPageAdmin/{id}',[UsersController::class,'updateUserPageAdmin']);
+Route::post('/upUserPageAdmin/{id}', [UsersController::class, 'upUserPageAdmin']);
 
  //  ----------------------------------product-------------------------------------
 
@@ -124,17 +131,18 @@ Route::get('/homeStandard', [PostsController::class, 'getPost'])->name('homeStan
 //admin
 Route::get('/home', [PostsController::class, 'getListPost'])->name('home');
 
-
 //-------------------------------Login-----------------------
 Route::get('getAuthLogin',[UsersController::class,'getAuthLogin'])->name('getAuthLogin');
 Route::post('postAuthLogin',[UsersController::class,'postAuthLogin'])->name('postAuthLogin');
 
+//-------------------------------LogOut-----------------------
+Route::get('logOut',[UsersController::class,'logOut'])->name('logOut');
 
-//User Admin
 
 Route::get('/cat', [CatsController::class, 'getListCat'])->name('cat');
 
-Route::get('/page/{id}', [UsersController::class, 'getUser'])->name('userDetail');
+
+Route::get('/user/{id}', [UsersController::class, 'getUser'])->name('userDetail');
 
 
 Route::post('/regisUser', [UsersController::class, 'regisUser'])->name('register');
@@ -162,11 +170,15 @@ Route::get("/gSFood",[ProductsController::class,'getFoodStoreStandard'])->name('
 Route::get("/gSToy",[ProductsController::class,'getToyStoreStandard'])->name('gSToy');
 Route::get("/gSMedicine",[ProductsController::class,'getMedicineStoreStandard'])->name('gSMedicine');
 
+//UpdateUser Standard
+Route::get('user/updateUserPage/{id}',[UsersController::class,'updateUserPage'])->name('updateUserPage');
+Route::get('upUserPage/updateUserPage/{id}',[UsersController::class,'updateUserPage'])->name('updateUserPage');
+
+Route::post('/upUserPage/{id}', [UsersController::class, 'upUserPage']);
+
 Route::post('/addPostStandard', [PostsController::class, 'addPostStandard']);
 
-Route::get('/flappy', function () {
-    return view('flappy');
-});
+Route::get('/flappy',[UsersController::class,'game'])->name('falppy');
 
 
 
@@ -182,3 +194,14 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Mail
+Route::group(['prefix'=>'email'],function(){
+    Route::get('/form', function () {
+        return view('mail.pages.email');
+    });
+    Route::get('/success',function(){
+        return view('mail.pages.success');
+    });
+    Route::post('/form','EmailController@store');
+});

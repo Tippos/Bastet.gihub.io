@@ -27,8 +27,14 @@
         <div class="small-avt">
             <img src="{{IMG_AVT}}" alt="">
         </div>
+        <div class="detail-user">
+            <a href="user/{{$user->id}}">
+                <img style="width: 50px;height: 50px;border-radius: 50%" src="{{$user->avatar}}" alt="">
+            </a >
+            <a href="user/{{$user->id}}">{{$user->fullName}}</a>
+        </div>
         <div class="login-content">
-            <a href="getAuthLogin">
+            <a href="logOut">
                 log out
                 <span><i class="fa fa-sign-out"></i></span>
             </a>

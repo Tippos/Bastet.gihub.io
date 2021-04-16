@@ -7,6 +7,7 @@ use App\Models\Posts;
 use App\Models\Products;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use function Composer\Autoload\includeFile;
 
@@ -15,6 +16,7 @@ class CatsController extends Controller
 {
     public function getListCat(Request $request)
     {
+        $user=Auth::user();
         $key = $request->key;
         if ($key == 1)
             $list_cat = Cats::all()->sortBy('name');
@@ -26,10 +28,11 @@ class CatsController extends Controller
             $list_cat = Cats::all()->sortByDesc('weightCat');
         else
             $list_cat = Cats::all();
-        return view('admin-page/page/listCat', compact('list_cat'));
+        return view('admin-page/page/listCat', compact('list_cat'),compact('user'));
     }
     public function getListCatStandard(Request $request)
     {
+        $user=Auth::user();
         $key = $request->key;
         if ($key == 1)
             $list_cat = Cats::all()->sortBy('name');
@@ -41,7 +44,7 @@ class CatsController extends Controller
             $list_cat = Cats::all()->sortByDesc('weightCat');
         else
             $list_cat = Cats::all();
-        return view('standard/listCat', compact('list_cat'));
+        return view('standard/listCat', compact('list_cat'),compact('user'));
     }
 
     public function getCat(Request $request)

@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
     //admin
+    public function game()
+    {
+        $user = Auth::user();
+        return view('flappy', compact('user'));
+    }
 
     public function getAdmin()
     {
@@ -23,14 +28,22 @@ class UsersController extends Controller
 
     }
 
-
+    public function inforAdmin()
+    {
+        $user = Auth::user();
+        return view('admin-page/admin/infor/inforAdmin', compact('user'));
+    }
 
     public function getUser($id)
     {
         $user = Users::find($id);
-        return view('page/userDetail', compact('user'));
+        return view('standard/userDetail', compact('user'));
     }
-
+    public function getUserAdmin($id)
+    {
+        $user = Users::find($id);
+        return view('admin-page/page/userDetail', compact('user'));
+    }
     public function getAdminUser(Request $request)
     {
         $key = $request->key;
@@ -65,6 +78,32 @@ class UsersController extends Controller
         return response()->json($list_user);
     }
 
+    public function updateUserPage($id)
+    {
+        try {
+            $user = Users::find($id);;
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //page not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
+        return view('standard/update/upUser', compact('user'));
+    }
+    public function updateUserPageAdmin($id)
+    {
+        try {
+            $user = Users::find($id);;
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //page not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
+        return view('admin-page/page/update/upUser', compact('user'));
+    }
     public function findId($id)
     {
         try {
@@ -237,6 +276,96 @@ class UsersController extends Controller
             return redirect()->route('standardUser')->with('key', 'Updated');
     }
 
+    //Update user standard
+    public function upUserPage(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            "userName" => "required|min:2|max:10",
+            "fullName" => "required|min:2|max:25",
+            "password" => "required",
+            "avatar" => "required",
+
+        ]);
+        if ($validate->fails()) {
+            return response()->json([
+                "meta" => ["code" => "MSG_VALIDATE_ERROR", "msg" => $validate->errors()->first()],
+                "data" => $validate->errors()->keys()],
+                SC_DATA_INVALID);
+        }
+        try {
+            $us=Auth::user();
+
+            $avatar = $request->avatar;
+            $avatar->move('img/image-page', $avatar->getClientOriginalName());
+            $user = Users::find($id);
+            $user->userName = $request->userName;
+            $user->password = Hash::make($request->password);
+            $user->fullName = $request->fullName;
+            $user->birthday = $us->birthday;
+            $user->email = $us->email;
+            $user->phoneNumber = $us->phoneNumber;
+            $user->job = $us->job;
+            $user->avatar = '/img/image-page/' . $avatar->getClientOriginalName();
+            $user->facebook = $us->facebook;
+            $user->gender = $us->gender;
+            $user->country = $us->country;
+            $user->role = $us->role;
+            $user->status = $us->status;
+            $user->save();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //page not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
+       return view('standard/userDetail',compact('user'));
+    }
+    //update user admin
+    public function upUserPageAdmin(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            "userName" => "required|min:2|max:10",
+            "fullName" => "required|min:2|max:25",
+            "password" => "required",
+            "avatar" => "required",
+
+        ]);
+        if ($validate->fails()) {
+            return response()->json([
+                "meta" => ["code" => "MSG_VALIDATE_ERROR", "msg" => $validate->errors()->first()],
+                "data" => $validate->errors()->keys()],
+                SC_DATA_INVALID);
+        }
+        try {
+            $us=Auth::user();
+
+            $avatar = $request->avatar;
+            $avatar->move('img/image-page', $avatar->getClientOriginalName());
+            $user = Users::find($id);
+            $user->userName = $request->userName;
+            $user->password = Hash::make($request->password);
+            $user->fullName = $request->fullName;
+            $user->birthday = $us->birthday;
+            $user->email = $us->email;
+            $user->phoneNumber = $us->phoneNumber;
+            $user->job = $us->job;
+            $user->avatar = '/img/image-page/' . $avatar->getClientOriginalName();
+            $user->facebook = $us->facebook;
+            $user->gender = $us->gender;
+            $user->country = $us->country;
+            $user->role = $us->role;
+            $user->status = $us->status;
+            $user->save();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //page not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
+        return view('admin-page/page/userDetail',compact('user'));
+    }
     public function delUser($id)
     {
         try {
@@ -285,11 +414,17 @@ class UsersController extends Controller
                 return redirect()->route('home')->with('key', 'Đăng nhập thành công');
             }
             if ($user->role == ROLE_USER_STANDARD) {
-                return redirect()->route('homeGuest')->with('key', 'Đăng nhập thành công');
+                return redirect()->route('homeStandard')->with('key', 'Đăng nhập thành công');
             }
         } else {
             return redirect()->route('getAuthLogin')->with('key', 'Đăng nhập thất bại. Kiểm tra lại Tên Đăng Nhập hoặc Mật Khẩu');
         }
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+        return redirect()->route('getAuthLogin');
     }
 
 }

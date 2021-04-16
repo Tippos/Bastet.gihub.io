@@ -37,7 +37,12 @@
 .small-avt:hover img {
     transform: scale(1.1);
 }
-
+.detail-user{
+    position: absolute;
+    top:0;
+    left: 0;
+    color: white;
+}
 .login-content {
     position: absolute;
     top: 0;

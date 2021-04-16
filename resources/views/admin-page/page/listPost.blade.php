@@ -57,13 +57,6 @@
                                max="5" min="1">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <input type="number" name="userId" class="form-control" id="inputCost" placeholder="User ID"
-                               max="100" min="1">
-                    </div>
-                </div>
-
 
                 <button style="margin-top: 50px;margin-left: 200px;margin-bottom: 20px" type="reset"
                         class="btn btn-danger">Hủy

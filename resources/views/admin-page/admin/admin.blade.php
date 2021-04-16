@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Bastet's Home</title>
+    <!--css web-->
+    <link rel="stylesheet" href="{{asset('css/styleBootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styleContentWeb.css')}}">
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="icon" type="image/png" href="{{asset('login/images/icons/icon.jpg')}}"/>
@@ -80,29 +83,22 @@
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar page panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img
-                        src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/120472565_849815579091961_8713095487069521055_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=Cqt2szCqClEAX_fXUXc&_nc_ht=scontent.fhan2-1.fna&oh=16401c541081961723d231d898608ebd&oe=607E8AE6"
-                        class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Nguyễn Mạnh Tiến</a>
-                </div>
-            </div>
-
             <!-- SidebarSearch Form -->
-
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-
+                    <li class="nav-item">
+                        <a href="inforAdmin" class="nav-link">
+                            <i class="nav-icon fa fa-user-circle"></i>
+                            <p>
+                                Infor
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-shopping-cart"></i>
@@ -289,7 +285,6 @@
 <div class="table">
     @yield('table')
 </div>
-
 
 
 <!-- import JavaScript -->

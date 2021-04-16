@@ -6,19 +6,22 @@ use App\Models\Posts;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
     public function getListPost()
     {
         $list_post = Posts::all()->sortByDesc('created_at');
-        return view('admin-page/page/listPost', compact('list_post'));
+        $user=Auth::user();
+        return view('admin-page/page/listPost', compact('list_post'),compact('user'));
     }
     // tra ve view standard
     public function getPost()
     {
+        $user=Auth::user();
         $list_post = Posts::all()->sortByDesc('created_at');
-        return view('standard/listPostDetail', compact('list_post'));
+        return view('standard/listPostDetail', compact('list_post'),compact('user'));
     }
 
     public function addPostStandard(Request $request)
@@ -28,7 +31,6 @@ class PostsController extends Controller
             "image" => "required",
             "description" => "required",
             "rate" => "required|integer",
-            "userId" => "required|integer",
         ]);
         if ($validate->fails()) {
             return response()->json([
@@ -37,6 +39,8 @@ class PostsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $user=Auth::user();
+
             $image = $request->image;
             $image->move('img/img-post', $image->getClientOriginalName());
             $add_post = new Posts();
@@ -44,7 +48,7 @@ class PostsController extends Controller
             $add_post->image = '/img/img-post/' . $image->getClientOriginalName();
             $add_post->description = $request->description;
             $add_post->rate = $request->rate;
-            $add_post->userId = $request->userId;
+            $add_post->userId = $user->id;
             $add_post->save();
 
         } catch (ModelNotFoundException $ex) {
@@ -64,7 +68,6 @@ class PostsController extends Controller
             "image" => "required",
             "description" => "required",
             "rate" => "required|integer",
-            "userId" => "required|integer",
         ]);
         if ($validate->fails()) {
             return response()->json([
@@ -73,6 +76,7 @@ class PostsController extends Controller
                 SC_DATA_INVALID);
         }
         try {
+            $user=Auth::user();
             $image = $request->image;
             $image->move('img/img-post', $image->getClientOriginalName());
             $add_post = new Posts();
@@ -80,7 +84,7 @@ class PostsController extends Controller
             $add_post->image = '/img/img-post/' . $image->getClientOriginalName();
             $add_post->description = $request->description;
             $add_post->rate = $request->rate;
-            $add_post->userId = $request->userId;
+            $add_post->userId = $user->id;
             $add_post->save();
 
         } catch (ModelNotFoundException $ex) {

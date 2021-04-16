@@ -7,6 +7,7 @@ use App\Models\Products;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Queue\RedisQueue;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use voku\helper\ASCII;
 use function Composer\Autoload\includeFile;
@@ -16,50 +17,58 @@ class ProductsController extends Controller
 {
     public function getListProduct()
     {
+        $user=Auth::user();
         $list_pr = Products::paginate(9);
-        return view('admin-page/page/listProduct', compact('list_pr'));
+        return view('admin-page/page/listProduct', compact('list_pr'),compact('user'));
     }
 
     public function getFoodStore()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 1)->get();
-        return view('admin-page/page/store/storeFood', compact('list_pr'));
+        return view('admin-page/page/store/storeFood', compact('list_pr'),compact('user'));
     }
 
     public function getToyStore()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 2)->get();
-        return view('admin-page/page/store/storeToy', compact('list_pr'));
+        return view('admin-page/page/store/storeToy', compact('list_pr'),compact('user'));
     }
 
     public function getMedicineStore()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 3)->get();
-        return view('admin-page/page/store/storeMedicine', compact('list_pr'));
+        return view('admin-page/page/store/storeMedicine', compact('list_pr'),compact('user'));
     }
     //Standard page
     public function getListProductStandard()
     {
+        $user=Auth::user();
         $list_pr = Products::paginate(9);
-        return view('standard/listProduct', compact('list_pr'));
+        return view('standard/listProduct', compact('list_pr'),compact('user'));
     }
 
     public function getFoodStoreStandard()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 1)->get();
-        return view('standard/store/storeFood', compact('list_pr'));
+        return view('standard/store/storeFood', compact('list_pr'),compact('user'));
     }
 
     public function getToyStoreStandard()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 2)->get();
-        return view('standard/store/storeToy', compact('list_pr'));
+        return view('standard/store/storeToy', compact('list_pr'),compact('user'));
     }
 
     public function getMedicineStoreStandard()
     {
+        $user=Auth::user();
         $list_pr = Products::where("class", "=", 3)->get();
-        return view('standard/store/storeMedicine', compact('list_pr'));
+        return view('standard/store/storeMedicine', compact('list_pr'),compact('user'));
     }
 
     public function getFood(Request $request)

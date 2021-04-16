@@ -1,4 +1,4 @@
-@extends('admin-page.page.layout')
+@extends('standard.homeDetail')
 @section('content')
 
     <div class="deltail">
@@ -8,7 +8,7 @@
                 <h3>{{$user->fullName}}</h3>
             </div>
             <div style="text-align: center;font-size: 20px">
-                <a href="updateUserPageAdmin/{{$user->id}}">
+                <a href="updateUserPage/{{$user->id}}">
                     <i  class="fa fa-edit"></i>
                 </a>
             </div>
