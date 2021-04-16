@@ -7,7 +7,6 @@ use \App\Http\Controllers\PostsController;
 use \App\Http\Controllers\CatsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\EmailController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -196,12 +195,5 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Mail
-Route::group(['prefix'=>'email'],function(){
-    Route::get('/form', function () {
-        return view('mail.pages.email');
-    });
-    Route::get('/success',function(){
-        return view('mail.pages.success');
-    });
-    Route::post('/form','EmailController@store');
-});
+Route::get('mail',[EmailController::class,'mail'])->name('mail');
+Route::post('sendMail',[EmailController::class,'sendMail']);

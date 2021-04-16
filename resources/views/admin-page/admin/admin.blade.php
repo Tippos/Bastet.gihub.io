@@ -252,10 +252,20 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a href="mail" class="nav-link">
+                            <i class="nav-icon fa fa-mail-bulk"></i>
+                            <p>
+                                Send Mail
+                                <span class="badge badge-info right"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-arrow-up"></i>
                         </a>
                     </li>
+
 
 
                     <!-- /.sidebar-menu -->

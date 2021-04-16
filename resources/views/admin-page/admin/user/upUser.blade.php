@@ -6,7 +6,7 @@
             <div class="form-group row">
                 <label for="inputfullName" class="col-sm-2 col-form-label">User Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="userName" class="form-control" id="inputuserName">
+                    <input type="text" name="userName" class="form-control" id="inputuserName" placeholder="{{$user->userName}}">
                 </div>
             </div>
             <div class="form-group row">
@@ -18,7 +18,7 @@
             <div class="form-group row">
                 <label for="inputfullName" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="fullName" class="form-control" id="inputfullName">
+                    <input type="text" name="fullName" class="form-control" id="inputfullName" placeholder="{{$user->fullName}}">
                 </div>
             </div>
             <div class="form-group row">
@@ -30,29 +30,22 @@
             <div class="form-group row">
                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" name="email" class="form-control" id="inputEmail">
+                    <input type="text" name="email" class="form-control" id="inputEmail" placeholder="{{$user->email}}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inpuPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                 <div class="col-sm-10">
-                    <input type="text" name="phoneNumber" class="form-control" id="inputphoneNumber">
+                    <input type="text" name="phoneNumber" class="form-control" id="inputphoneNumber"  placeholder="{{$user->phoneNumber}}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
                 <div class="col-sm-10">
-                    <input type="text" name="job" class="form-control" id="inputJob">
+                    <input type="text" name="job" class="form-control" id="inputJob"  placeholder="{{$user->job}}">
                 </div>
             </div>
-{{--            <div class="form-group row">--}}
-{{--                <label for="inputAvatar" class="col-sm-2 col-form-label">Avatar </label>--}}
-{{--                <div class="col-sm-10">--}}
-{{--                    <input type="file" name="avatar" class="form-control" required="true">--}}
-{{--                </div>--}}
-{{--                <br/>--}}
-{{--            </div>--}}
-            {{--JS Preview Image Before Upload--}}
+
             <script>
                 function readURL(input) {
                     if (input.files && input.files[0]) {
@@ -73,7 +66,7 @@
                 <label for="inputImage" class="col-sm-2 col-form-label">Avatar</label>
                 <div class="col-sm-10">
                     <input id="image" type="file" name="avatar" class="form-control" required="true">
-                    <img style="width: 100px;height: 100px" id="blah" src="" alt="">
+                    <img style="width: 100px;height: 100px" id="blah" src="{{$user->avatar}}" alt="">
                 </div>
                 <br/>
             </div>
@@ -86,7 +79,7 @@
             <div class="form-group row">
                 <label for="inputFacebook" class="col-sm-2 col-form-label">Facebook</label>
                 <div class="col-sm-10">
-                    <input type="text" name="facebook" class="form-control" id="inputFacebook" placeholder="URL">
+                    <input type="text" name="facebook" class="form-control" id="inputFacebook" placeholder="URL" placeholder="{{$user->facebook}}">
                 </div>
             </div>
             <div class="form-group row">

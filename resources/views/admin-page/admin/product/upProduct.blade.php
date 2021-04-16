@@ -10,15 +10,6 @@
                 </div>
             </div>
 
-            {{--            <div class="form-group row">--}}
-            {{--                <label for="inputImage" class="col-sm-2 col-form-label">Image</label>--}}
-            {{--                <div class="col-sm-10">--}}
-            {{--                    <input type="file" name="image" class="form-control" required="true">--}}
-            {{--                </div>--}}
-            {{--                <br/>--}}
-            {{--            </div>--}}
-
-            {{--JS Preview Image Before Upload--}}
             <script>
                 function readURL(input) {
                     if (input.files && input.files[0]) {
@@ -39,7 +30,7 @@
                 <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-10">
                     <input id="image" type="file" name="image" class="form-control" required="true">
-                    <img style="width: 100px;height: 100px" id="blah" src="" alt="">
+                    <img style="width: 100px;height: 100px" id="blah" src="{{$p->image}}" alt="">
                 </div>
                 <br/>
             </div>

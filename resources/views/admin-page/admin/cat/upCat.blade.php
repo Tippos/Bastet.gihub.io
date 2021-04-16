@@ -7,24 +7,16 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Cat's Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" id="inputName">
+                    <input type="text" name="name" class="form-control" id="inputName" placeholder="{{$c->name}}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inpuForm" class="col-sm-2 col-form-label">Form</label>
                 <div class="col-sm-10">
-                    <input type="text" name="form" class="form-control" id="inputForm">
+                    <input type="text" name="form" class="form-control" id="inputForm" placeholder="{{$c->form}}">
                 </div>
             </div>
-{{--            form cu--}}
-{{--        <div class="form-group row">--}}
-{{--            <label for="inputImage" class="col-sm-2 col-form-label">Image</label>--}}
-{{--            <div class="col-sm-10">--}}
-{{--                <input type="file" name="image" class="form-control" required="true">--}}
-{{--            </div>--}}
-{{--            <br/>--}}
-{{--        </div>--}}
-            {{--JS Preview Image Before Upload--}}
+
             <script>
                 function readURL(input) {
                     if (input.files && input.files[0]) {
@@ -45,7 +37,7 @@
                 <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-10">
                     <input id="image" type="file" name="image" class="form-control" required="true">
-                    <img style="width: 100px;height: 100px" id="blah" src="" alt="">
+                    <img style="width: 100px;height: 100px" id="blah" src="{{$c->image}}" alt="">
                 </div>
                 <br/>
             </div>
@@ -59,7 +51,7 @@
             <div class="form-group row">
                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input type="text" name="description" class="form-control" id="inputDescription">
+                    <input type="text" name="description" class="form-control" id="inputDescription" placeholder="{{$c->description}}">
                 </div>
             </div>
 

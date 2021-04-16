@@ -115,7 +115,7 @@ class UsersController extends Controller
                 "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
                 "data" => $ex], SC_SERVER_ERROR); //anything went wrong
         }
-        return view('admin/page/upUser', compact('user'));
+        return view('admin-page/admin/user/upUser', compact('user'));
     }
 
     public function addUser(Request $request)

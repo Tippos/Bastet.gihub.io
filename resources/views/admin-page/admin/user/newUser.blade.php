@@ -1,6 +1,6 @@
 @extends('admin-page.admin.admin')
 @section('table')
-    <div style="margin: auto;width: 1000px;" class="col-lg-9">
+    <div style="margin-left: 300px;;width: 1000px;" class="col-lg-9">
         <form action="/addUser" enctype="multipart/form-data" method="post">
             @csrf
             <div class="form-group row">

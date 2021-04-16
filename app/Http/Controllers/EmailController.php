@@ -3,46 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use App\Mail\SendMailable;
-use Mail;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 class EmailController extends Controller
 {
-    public function index()
+    public function mail()
     {
-        return response()->json(['success'=>1]);
-    }
-    public function create()
-    {
-        //
-    }
-    public function store(Request $request)
-    {
-        $email = $request->email;
-        $bodycontent = $request->bodycontent;
-        $objDemo = new \stdClass();
-        $objDemo->email =  $email;
-        $objDemo->bodycontent =  $bodycontent;
-        Mail::to("thanhhoacth2013@gmail.com")->send(new SendMailable($objDemo));
-
-        return response()->json(['success'=>true,'email'=>$email,'bodycontent'=>$bodycontent]);
-    }
-    public function show($id)
-    {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    public function destroy($id)
-    {
-        //
+        $user = Auth::user();
+        return view('mail/email', compact('user'));
     }
 
+    public function sendMail(Request $request)
+    {
+        $user=Auth::user();
+        $data = [
+            'content' => $request->cont,
+            'name' => $request->name,
+        ];
+        Mail::send('mail/formEmail', $data, function ($message) use ($request) {
+            $message->from($request->emailAddress,$request->name);
+            $message->to('nguyenmanhtien3091999@gmail.com', 'Nguyễn Mạnh Tiến');
+            $message->subject($request->title);
+        });
+        return redirect()->route('mail')->with('key','Đã gửi Mail');
+    }
 }
